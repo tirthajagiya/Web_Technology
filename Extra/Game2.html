@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myphoto {
+            position: relative;
+            width: 30px;
+        }
+
+        #football {
+            position: relative;
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="go1Left()">Left</button>
+    <button onclick="go1Right()">Right</button>
+    <button onclick="go1Up()">Up</button>
+    <button onclick="go1Down()">Down</button>
+    <button onclick="onPause()">Pause</button> 
+    <br>
+    <img src="WhatsApp Image 2024-07-06 at 11.03.39_021ed37f.jpg" alt="" id="myphoto">
+    <img src="football.webp" alt="" id="football">
+
+
+    <script>
+
+        function onPause(){
+            clearInterval(a1);
+            clearInterval(a2);
+            clearInterval(a3);
+            clearInterval(a4);
+        }
+        let a1;
+        let a2;
+        let a3;
+        let a4;
+        function move1() {
+            l = parseInt(Math.random() * (screen.availWidth - 40)) + "px";
+            t = parseInt(Math.random() * (screen.availHeight - 200)) + "px";
+            document.getElementById('football').style.left = l;
+            document.getElementById('football').style.top = t;
+        }
+        move1();
+
+        function clearInt(a, b, c) {
+            clearInterval(a);
+            clearInterval(b);
+            clearInterval(c);
+        }
+
+        function go1Left() {
+            clearInt(a2, a3, a4);
+            a1 = setInterval(goLeft, 7);
+        }
+
+        function go1Right() {
+            clearInt(a1, a3, a4);
+            a2 = setInterval(goRight, 7);
+        }
+
+        function go1Down() {
+            clearInt(a1, a2, a4);
+            a3 = setInterval(goDown, 7);
+        }
+
+        function go1Up() {
+            clearInt(a1, a2, a3);
+            a4 = setInterval(goUp, 7);
+
+        }
+
+        let left = 0;
+        let up = 0;
+
+        function goLeft() {
+            left--;
+            document.getElementById('myphoto').style.left = left + "px";
+        }
+
+        function goRight() {
+            left++;
+            document.getElementById('myphoto').style.left = left + "px";
+        }
+
+        function goUp() {
+            up--;
+            document.getElementById('myphoto').style.top = up + "px";
+        }
+
+        function goDown() {
+            up++;
+            document.getElementById('myphoto').style.top = up + "px";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1" style="height: 700px; width: 1000px; background-color: blue;"></div>
+    <button onclick="event1()">Start</button>
+    <button onclick="event2()">Stop</button>
+    <script>
+        document.getElementById('div1').style.height=screen.clientY;
+        document.getElementById('div1').style.width=screen.clientX;
+        function colorChange(){
+            r=parseInt(Math.random()*255);
+            g=parseInt(Math.random()*255);
+            b=parseInt(Math.random()*255);
+            a=Math.random();
+            document.getElementById('div1').style.backgroundColor="rgb("+r+","+g+","+b+","+a+")"
+        }
+
+        function event1(){
+           c= setInterval(colorChange,100);
+        }
+
+        function event2(){
+            clearInterval(c);
+        }
+    </script>
+</body>
+</html>

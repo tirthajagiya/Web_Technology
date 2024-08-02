@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        #abc {
+            border: 1px solid black;
+            height: 155px;
+            width: 130px;
+        }
+
+        button {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: silver;
+            margin-left: 5px;
+
+            @media screen {
+                button:hover {
+                    background-color: red;
+                }
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div id="abc">
+        <table>
+            <tr>
+                <td colspan="4"><input type="text" id="b" style="width: 110px;"></td>
+            </tr>
+
+            <tr>
+                <td><button onclick="clear1()">C</button></td>
+                <td><button onclick="clear2()">X</button></td>
+            </tr>
+
+            <tr>
+                <td><button id="a" onclick="addNumber('7')">7</button></td>
+                <td><button id="a" onclick="addNumber('8')">8</button></td>
+                <td><button id="a" onclick="addNumber('9')">9</button></td>
+                <td><button id="a" onclick="addNumber('-')">-</button></td>
+            </tr>
+
+            <tr>
+                <td><button id="a" onclick="addNumber('4')">4</button></td>
+                <td><button id="a" onclick="addNumber('5')">5</button></td>
+                <td><button id="a" onclick="addNumber('6')">6</button></td>
+                <td><button id="a" onclick="addNumber('+')">+</button></td>
+            </tr>
+
+            <tr>
+                <td><button id="a" onclick="addNumber('1')">1</button></td>
+                <td><button id="a" onclick="addNumber('2')">2</button></td>
+                <td><button id="a" onclick="addNumber('3')">3</button></td>
+                <td><button id="a" onclick="addNumber('/')">/</button></td>
+            </tr>
+
+            <tr>
+                <td><button id="a" onclick="addNumber('0')">0</button></td>
+                <td><button id="a" onclick="addNumber('.')">.</button></td>
+                <td><button id="a" onclick="addNumber('*')">*</button></td>
+                <td><button onclick="calculate()">=</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function addNumber(char) {
+            document.getElementById('b').value += char;
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('b').value = eval(document.getElementById('b').value);
+            }
+            catch (Error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Please Enter valid expression!',
+                    icon: 'error',
+                    confirmButtonText: 'X'
+                })
+            }
+        }
+
+        function clear1() {
+            document.getElementById("b").value = "";
+        }
+
+        function clear2() {
+            document.getElementById("b").value = document.getElementById("b").value.slice(0, -1);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <SCRIPT>
+        let n=parseInt(prompt("Enter A Number:"));
+        let a=n;
+        let x=n;
+        let count=0;
+        while(n>0){
+            n=parseInt(n/10);
+            count++;
+        }
+        let sum=0;
+        let rem;
+        while(a>0){
+            rem=a%10;
+            sum=sum+Math.pow(rem,count);
+            a=parseInt(a/10);
+        }
+
+        if(sum==x){
+            document.write("Amstrong");
+        }
+        else{
+            document.write("Not Amstrong");
+        }
+    </SCRIPT>
+</body>
+</html>

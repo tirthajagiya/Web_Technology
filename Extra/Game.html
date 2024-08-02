@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+
+        #abc {
+            position: absolute;
+            top: 00px;
+            left: 700px;
+        }
+
+        #button1 {
+            position: absolute;
+            top: 200px;
+            left: 500px;
+        }
+
+        #button1 button {
+            text: a1;
+            width: 500px;
+            height: 250px;
+            background-color: blanchedalmond;
+            animation-name: example;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        #button1 button:hover {
+            background-color: rgb(177, 31, 31);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="button1">
+        <button onclick="start2()">
+            <h1>Start</h1>
+        </button>
+    </div>
+    <div id="abc">
+
+    </div>
+    <div id="scooreid">
+    </div>
+    <script>
+        function start2() {
+            Swal.fire({
+                title: "Are you sure to start game?",
+                text: "Conform !",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, start it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    start();
+                }
+            });
+        }
+
+        function start() {
+            document.getElementById('scooreid').innerHTML = "Level:" + level + " || Scoore:" + scoore;
+            document.getElementById('abc').innerHTML = "<img src='WhatsApp_Image_2024-07-06_at_11.03.39_bb6025d0-removebg-preview.png' alt='' height='100px' width='100px' id='abc' onclick='addScore()'>";
+            document.getElementById('button1').innerHTML = "";
+        }
+        let scoore = 0;
+        let level = 1;
+        function move() {
+            t = parseInt(Math.random() * 600) + "px";
+            l = parseInt(Math.random() * 800) + "px";
+            document.getElementById('abc').style.top = t;
+            document.getElementById('abc').style.left = l;
+        }
+
+        function addScore() {
+            scoore++;
+            document.getElementById('scooreid').innerHTML = "Level:" + level + " || Scoore:" + scoore;
+            move();
+            if (scoore % 10 == 0) {
+                level++;
+            }
+        }
+
+        document.addEventListener("click",()=>{
+                scoore--;
+                document.getElementById('scooreid').innerHTML = "Level:" + level + " || Scoore:" + scoore;
+        })
+
+        const movespeed = 2000;
+
+        setInterval(move, (movespeed - 10));
+    </script>
+</body>
+
+</html>

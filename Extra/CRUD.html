@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <style>
+            
+        </style>
+</head>
+
+<body class="container-fluid">
+    <div class="row">
+        <div class="col-3 border border-3px-dark">
+            <label for="">Name:</label>
+            <input type="text" id="nameid">
+        </div>
+        <div class="col-3 border border-3px-dark">
+            <label for="">City:</label>
+            <input type="text" id="cityid">  
+        </div>
+        <div class="col-3 border border-3px-dark">
+            <label for="">Photo Link:</label>
+            <input type="file" id="photoid">
+        </div>
+        <div class="col-3 border border-3px-dark">
+            <label for="">Occupation:</label>
+            <input type="text" id="occupationid">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"><button style="margin-left: 720px; margin-top: 20px;" onclick="final()">ENTER !!!</button></div>
+    </div>
+    <div style="border: 2px solid black; margin-top: 20px; margin-bottom: 20px;"></div>
+    <div id="add"></div>
+    <script>
+        temp=0;
+        var a=10;
+        a=15
+        name;
+        city;
+        function final(){
+            name=document.getElementById('nameid').value;
+            temp='<div class="row">'
+            temp+='<div class="col-3">'
+            temp+=document.getElementById('nameid').value;
+            temp+='</div>'
+            temp+='</div>'
+            document.getElementById('add').innerHTML=temp;
+        }
+    </script>
+</body>
+
+</html>

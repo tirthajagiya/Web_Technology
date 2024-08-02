@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body{
+            background-color: #D8EFD3;
+        }
+        #main{
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 300px;
+            width: 450px;
+            margin: 0px 0px 0px 550px;
+            background-color: #95D2B3;
+        }
+        #number{
+            height: 35px;
+            width: 300px;
+            margin-left: 75px;
+            margin-top: 30px;
+            background-color: #D8EFD3;
+        }
+        #number button{
+            margin-left: 120px;
+            margin-top: 7px;
+            background-color: black;
+            color: white;
+            border-radius: 50%;
+            animation: button1 .1s  1 infinite;
+        }
+        #present{
+            display: block;
+        }
+        #a{
+            position: relative;
+            margin-left: 75px;
+        }
+        #absent_number{
+            background-color: #D8EFD3;
+            margin-top: 100px;
+            max-width: 450px;
+        }
+        #absent_number1{
+            max-width: 450px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="number"><button onclick="start()">Start</button></div>
+        <br>
+        <div id="Abs">
+            
+        </div>
+        <br>
+        <span id="absent_number"></span>
+        <span id="absent_number1"></span>
+    </div>
+    <script>
+        let number1=301;
+        function start(){
+            document.getElementById('number').innerHTML=number1;
+            document.getElementById('Abs').innerHTML='<input type="radio" id="a" value="abc" onClick="present()"> <label for="">Present</label> <input type="radio" value="abc" id="b" onClick="absent()"> <label for="" id="b">Absent</label>';
+            document.getElementById('absent_number').innerHTML="<span id='absent_number'>Absent Number Is Here-</span>";
+        }
+
+        function present(){
+            if(number1<474){
+                number1++;
+                document.getElementById('number').innerHTML=number1;
+            }
+            else{
+                document.getElementById('number').innerHTML="End";
+            }
+            document.getElementById('Abs').innerHTML='<input type="radio" id="a" value="abc" onClick="present()" checked> <label for="">Present</label> <input type="radio" value="abc" id="b" onClick="absent()"> <label for="" id="b">Absent</label>';
+        }
+
+        function absent(){
+            if(number1<474){
+                document.getElementById('absent_number1').innerHTML+=number1+",";
+                number1++;
+                document.getElementById('number').innerHTML=number1;
+                document.getElementById('Abs').innerHTML='<input type="radio" id="a" value="abc" onClick="present()"> <label for="">Present</label> <input type="radio" value="abc" id="b" onClick="absent()" checked> <label for="" id="b">Absent</label>';
+            }
+            else{
+                document.getElementById('number').innerHTML="Conform Absent Number:";
+                document.getElementById('number').innerHTML+="<textarea style='width:300px' id='textarea1'>"+document.getElementById('absent_number1').innerHTML+"</textarea>";
+                document.getElementById('Abs').innerHTML="";
+                document.getElementById('absent_number1').innerHTML="<button onClick='final()'>Conform</button>";
+                document.getElementById('absent_number').innerHTML="";
+            }
+        }
+
+        function final(){
+            document.getElementById('Abs').innerHTML=Swal.fire("Final Absent Number Is: "+document.getElementById('textarea1').innerHTML);
+            document.getElementById('Abs').innerHTML="";
+            document.getElementById('absent_number1').innerHTML="";
+            number1=301;
+            document.getElementById('number').innerHTML="<button onclick='start()''>Start</button>";
+            document.getElementById('absent_number').innerHTML="<span id='absent_number'>Absent Number Is Here-</span>";
+        }
+    </script>
+</body>
+</html>

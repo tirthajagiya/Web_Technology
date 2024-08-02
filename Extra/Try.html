@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form {
+            width: 50%;
+            float: left;
+        }
+
+        #view {
+            width: 50%;
+            float: right;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <form action="">
+        <div id="form">
+            <input type="text" id="abc" onfocus="reset()">
+            <button onclick="addStudents()" id="xyz">Add</button>
+            <br>
+            <span id="x"></span>
+        </div>
+    </form>
+    <div id="view">
+
+    </div>
+    <script>
+
+        idToUpdate = -1;
+        students = ['arjun', 'bala', 'darshan'];
+        displayStudent();
+        function displayStudent() {
+            tempString = "<table border='1'>";
+            for (let i = 0; i < students.length; i++) {
+                tempString += "<tr>";
+                tempString += "<td>";
+                tempString += students[i];
+                tempString += "</td>";
+                tempString += "<td>";
+                tempString += "<button onclick='deleteStudent(" + i + ")'>Delete</button>";
+                tempString += "</td>";
+                tempString += "<td>";
+                tempString += "<button onclick='editStudent(" + i + ")'>Edit</button>";
+                tempString += "</td>";
+                tempString += "</tr>";
+            }
+            tempString += "</table>";
+            document.getElementById('view').innerHTML = tempString;
+        }
+
+        function addStudents() {
+            if(document.getElementById('abc').value==""){
+                document.getElementById('x').innerHTML="Please Enter A Name."
+            }
+            else{
+                if (idToUpdate >= 0) {
+                students[idToUpdate] = document.getElementById('abc').value;
+            }
+            else {
+                temp = document.getElementById('abc');
+                students.push(temp.value);
+            }
+                document.getElementById('abc').value = "";
+                displayStudent();
+            }
+        }
+        function deleteStudent(id) {
+            a = confirm("Delete This Elemant:");
+            if (a) {
+                students.splice(id, 1);
+                displayStudent();
+            }
+        }
+
+        function editStudent(id) {
+            idToUpdate = id;
+            document.getElementById('abc').value = students[idToUpdate];
+            document.getElementById('x').innerHTML="";
+        }
+
+        function reset(){
+            document.getElementById('x').innerHTML="";
+        }
+    </script>
+</body>
+
+</html>

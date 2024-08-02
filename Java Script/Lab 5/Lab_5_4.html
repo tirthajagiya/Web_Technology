@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <table>
+            <tr>
+                <td><label for="">Username::</label></td>
+                <td><input type="text" id="username1"></td>
+                <td><button for="" onclick="check1()">Check</button></td>
+                <td><div id="username2"></div></td>
+        
+
+            </tr>
+
+            <tr>
+                <td><label for="">Password::</label></td>
+                <td><input type="password" id="password1"></td>
+                <td><button for="" onclick="check2()">Check</button></td>
+                <td><div id="password2"></div></td>
+            </tr>
+
+            <tr>
+                <td><label for="">Repeat Password::</label></td>
+                <td><input type="password" id="repetpassword1"></td>
+                <td><button for="" onclick="check3()">Check</button></td>
+                <td><div id="repetpassword2"></div></td>
+            </tr>
+
+            <tr>
+                <td><label for="">Date Of Birth::</label></td>
+                <td><input type="date" ></td>
+                <td><button for="">Check</button></td>
+                <td><div></div></td>
+            </tr>
+
+            <tr>
+                <td><label for="">Enrollment No.::</label></td>
+                <td><input type="number" id="er1"></td>
+                <td><button for=""onclick="check5()">Check</button></td>
+                <td><div id="er2"></div></td>
+            </tr>
+
+            <tr>
+                <td><label for="">Email::</label></td>
+                <td><input type="email" id="mail1"></td>
+                <td><button for="" onclick="check6()">Check</button></td>
+                <td><div id="mail2"></div></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function check1(){
+            user=document.getElementById('username1').value;
+            userRegax=/^[A-Z]|[a-z]][[A-Z]|[a-z]|\\d|[_]]{7,29}$/;
+
+            if(userRegax.test(user)){
+                document.getElementById('username2').innerHTML="Valid";
+            }else{
+                document.getElementById('username2').innerHTML="InValid";
+            }
+
+        }
+
+        function check2(){
+            pass=document.getElementById('password1').value;
+            passRegax=/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+            if(passRegax.test(pass)){
+                document.getElementById('password2').innerHTML="Valid";
+            }
+            else{
+                document.getElementById('password2').innerHTML="InValid";
+            }
+        }
+
+        function check3(){
+            reppass=document.getElementById('repetpassword1').value;
+            reppassRegax=/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+            if(reppassRegax.test(reppass)){
+                document.getElementById('repetpassword2').innerHTML="Valid";
+            }
+            else{
+                document.getElementById('repetpassword2').innerHTML="InValid";
+            }
+            
+        }
+        function check5(){
+            er=document.getElementById('er1').value;
+            erRegax=/^[0-9]*\d$/;
+
+            if(erRegax.test(er)){
+                document.getElementById('er2').innerHTML="Valid";
+            }
+            else{
+                document.getElementById('er2').innerHTML="InValid";
+            }
+        }
+
+        function check6(){
+            mail=document.getElementById('mail1').value;
+            mailRegax=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+            if(mailRegax.test(mail)){
+                document.getElementById('mail2').innerHTML="Valid";
+            }
+            else{
+                document.getElementById('mail2').innerHTML="InValid";
+            }
+        }
+    </script>
+</body>
+</html>

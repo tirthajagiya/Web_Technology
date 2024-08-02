@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a=parseInt(prompt("Enter A Number:"));
+        let b=a;
+        let sum=0;
+        let rem;
+        while(a>0){
+            rem=a%10;
+            sum=sum*10+rem;
+            a=parseInt(a/10);
+        }
+
+        if(sum==b){
+            document.write("Palidrom.");
+        }
+
+        else{
+            document.write("Not Palidrom.");
+        }
+    </script>
+</body>
+</html>
