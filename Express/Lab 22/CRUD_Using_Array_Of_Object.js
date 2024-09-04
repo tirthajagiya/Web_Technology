@@ -4,7 +4,12 @@ const bodyParser=require('body-parser');
 
 const app=express();
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded(
+    {
+        extended:true
+    }
+));
+app.use(express.json());
 
 const students=[
     {
@@ -12,7 +17,8 @@ const students=[
         Name:"Prince",
         Age:11,
         Spi:6
-    },
+    }
+    ,
     {
         id:2222,
         Name:"Shyam",
@@ -86,17 +92,15 @@ app.get("/students/search/:name",(req,res)=>{
 
 //filter
 
-app.get("/students/filter1/:from1",(req,res)=>{
+app.get("/students/filter/:from-:to",(req,res)=>{
 
-    res.send(students[req.params.from1]);
+    const filterStudent=students.filter(stu=>{
+        if((req.params.from<=stu.Spi) && (req.params.to>=stu.Spi)){
+            return true;
+        }
+    });
 
-    // const filterStudent=students.filter(stu=>{
-    //     if((req.params.from<=stu.Spi) && (req.params.to>=stu.Spi)){
-    //         return true;
-    //     }
-    // });
-
-    // res.send(filterStudent);
+    res.send(filterStudent);
 })
 
 app.listen(3000,()=>{
